@@ -1,0 +1,11 @@
+{block content}
+
+    <h1>Přihlášení</h1>
+
+    <div n:foreach="$users as $user" class="user">
+        <div class="date">{$user->created|date:'F j, Y'}</div>
+
+        <div>{$user->name} {$user->nick} {$user->last_name}</div>
+
+
+    </div>

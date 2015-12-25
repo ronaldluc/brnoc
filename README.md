@@ -1,4 +1,4 @@
 # brnoc
 Brněnská přednášková noc
 
-Web Brněnské obdoby P-noci
+Web brněnské obdoby P-noci

@@ -12,6 +12,7 @@ use Nette,
 	App\Model;
 
 
+
 class RegisteredPresenter extends Nette\Application\UI\Presenter
 {
 	/** @var  @var Nette\Databe\Context */
@@ -23,6 +24,13 @@ class RegisteredPresenter extends Nette\Application\UI\Presenter
 	}
 
 	public function renderDefault()
+	{
+		$this->template->users = $this->database->table('user')
+			->order('created DESC')
+			->limit(5);
+	}
+
+	public function renderAdmin()
 	{
 		$this->template->users = $this->database->table('user')
 			->order('created DESC')

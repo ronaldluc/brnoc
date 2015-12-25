@@ -7,7 +7,6 @@
         <thread>
             <tr>
                 <th>#</th>
-                <th>Datum registrace</th>
                 <th>Jméno</th>
                 <th>Přezdívka</th>
                 <th>Příjmení</th>
@@ -18,7 +17,6 @@
             <div n:foreach="$users as $user" class="user">
                 <tr>
                     <td>{$iterator->counter}</td>
-                    <td>{$user->created|date:'j. n. Y'}</td>
                     <td>{$user->name}</td>
                     <td>{$user->nick}</td>
                     <td>{$user->last_name}</td>

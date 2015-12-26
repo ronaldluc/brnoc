@@ -49,9 +49,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a n:href="Homepage:default">Home</a></li>
-                <li><a n:href="News:default">Aktuality</a></li>
-                <li class="dropdown">
+                <li {ifCurrent Homepage:*}class="active"{/ifCurrent}><a n:href="Homepage:default">Home</a></li>
+                <li {ifCurrent News:*}class="active"{/ifCurrent}><a n:href="News:default">Aktuality</a></li>
+                <li class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Přihláška<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a n:href="RegistrationUser:default">Osoba</a></li>
@@ -59,8 +59,8 @@
                     <li><a href="#">Přednáška</a></li>
                   </ul>
                 </li>
-                <li><a n:href="Registered:admin">Rozpis</a></li>
-                <li><a href="#">Historie</a></li>
+                <li {ifCurrent Registered:*}class="active"{/ifCurrent}><a n:href="Registered:admin">Rozpis</a></li>
+                <li {ifCurrent News:*}class="active"{/ifCurrent}><a href="#">Historie</a></li>
               </ul>
               <ul class="navbar-text navbar-right">
                 <a href="#" class="navbar-link">Facebook</a>
@@ -88,9 +88,9 @@
           <!-- data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==-->
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <h1>BrNOC</h1>
+              <p>Nejlepší akce <small>(s. r. o.)</small> jaká kdy na Moravě byla.</p>
+              <p><a class="btn btn-lg btn-primary" n:href="RegistrationUser:default" role="button">To chi!</a></p>
             </div>
           </div>
         </div>

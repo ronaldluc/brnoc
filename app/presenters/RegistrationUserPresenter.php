@@ -41,7 +41,7 @@ class RegistrationUserPresenter extends Nette\Application\UI\Presenter
 			->setRequired();
 
 		$form->addText('email', 'Email')
-			->setRequired();
+			->setRequired()->addRule($form::EMAIL);
 
 		$form->addText('mystery_topic', 'Zájem o přednášku na téma')
 			->setRequired();

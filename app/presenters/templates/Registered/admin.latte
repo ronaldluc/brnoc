@@ -1,7 +1,7 @@
 {block content}
 
 
-    <h1>Přihlášení</h1>
+    <div class="page-header"><h1><h1>Přihlášení</h1></div>
 
     <table class="table table-striped">
         <thread>
@@ -11,6 +11,7 @@
                 <th>Jméno</th>
                 <th>Přezdívka</th>
                 <th>Příjmení</th>
+                <th>Škola</th>
             </tr>
         </thread>
 
@@ -22,6 +23,7 @@
                     <td>{$user->name}</td>
                     <td>{$user->nick}</td>
                     <td>{$user->last_name}</td>
+                    <td>{$user->school}</td>
                 </tr>
             </div>
         </tbody>

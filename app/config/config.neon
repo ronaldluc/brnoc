@@ -20,3 +20,4 @@ session:
 
 services:
 	router: App\RouterFactory::createRouter
+	-	Nette\Mail\SendmailMailer

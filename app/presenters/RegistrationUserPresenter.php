@@ -11,6 +11,8 @@ namespace App\Presenters;
 use Nette,
 	Nette\Application\UI\Form,
 	Nette\Utils\DateTime,
+	Nette\Mail\Message,
+	Nette\Mail\IMailer,
 	Helpers;
 
 
@@ -79,8 +81,20 @@ class RegistrationUserPresenter extends Nette\Application\UI\Presenter
 			'created' => new DateTime(),
 		]);
 
+		$mail = new Message;
+		$mail->setFrom('BrNOC bot <bot@brnoc.cz>')
+			->addTo($values->email)
+			->setSubject('Potvrzení příhlášení')
+			->setBody("Byl jsi přihlášen jako účastník BrNOCi 2015. \n \nBrNOC tým");
+
+
+		//$this->mailer->send($mail);
+		//not done
+
 		$this->flashMessage('Registrace proběhla úspěšně', 'success');
 		$this->redirect('this');
 	}
+
+	//private function
 
 }

@@ -1,0 +1,17 @@
+{block content}
+
+
+    <div class="page-header"><h1><h1>Přihlášené přednášky</h1> </div>
+
+
+	<table class="table">
+        <div n:foreach="$talks as $talk" class="talk">
+
+                <tr>
+                    <th class="col-md-" rowspan="3">{$talk->user_id}</th>
+	                <th>{$talk->name}</th></tr>
+                <tr><td>{$talk->subject} - {$talk->lenght} minut</td></tr>
+                <tr><td>{$talk->decription}</td></tr>
+                <tr><td colspan="2"><hr /></td></tr>
+        </div>
+    </table>

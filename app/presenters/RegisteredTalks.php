@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: norik
- * Date: 25.12.15
- * Time: 2:22
+ * Date: 27.12.15
+ * Time: 15:29
  */
 
 namespace App\Presenters;
@@ -13,7 +13,7 @@ use Nette,
 
 
 
-class RegisteredPresenter extends Nette\Application\UI\Presenter
+class RegisteredTalksPresenter extends Nette\Application\UI\Presenter
 {
 	/** @var  @var Nette\Databe\Context */
 	private $database;
@@ -25,13 +25,18 @@ class RegisteredPresenter extends Nette\Application\UI\Presenter
 
 	public function renderDefault()
 	{
-		$this->template->users = $this->database->table('user')
-			->order('created DESC');
+		$this->template->talks = $this->database->table('talk')
+			->order('name DESC');
 	}
 
 	public function renderAdmin()
 	{
-		$this->template->users = $this->database->table('user')
-			->order('created DESC');
+		$this->template->talks = $this->database->table('talk')
+			->order('name DESC');
+	}
+
+	private function addUser()
+	{
+
 	}
 }

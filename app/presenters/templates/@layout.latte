@@ -59,11 +59,16 @@
                     <li><a n:href="RegistrationTalk:default">Přednáška</a></li>
                   </ul>
                 </li>
-                <li {ifCurrent Registered:*}class="active"{/ifCurrent}><a n:href="Registered:admin">Rozpis</a></li>
+                <li {ifCurrent Registered:*}class="active"{/ifCurrent}><a n:href="Registered:default">Rozpis</a></li>
                 <li {ifCurrent News:*}class="active"{/ifCurrent}><a href="#">Historie</a></li>
-              </ul>
-              <ul class="navbar-text navbar-right">
-                <a href="#" class="navbar-link">Facebook</a>
+                <li class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
+	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrace<span class="caret"></span></a>
+	              <ul class="dropdown-menu">
+	                <li><a n:href="Registered:admin">Účastníci</a></li>
+	                <li role="separator" class="divider"></li>
+	                <li><a n:href="RegisteredTalks:admin">Přednášky</a></li>
+                  </ul>
+                <li class=""><a href="#" class="navbar-link">Facebook</a></li>
               </ul>
             </div>
           </div>
@@ -150,12 +155,6 @@
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="{$basePath}/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="{$basePath}/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
-
-
-
-
-
-	{$basePath}

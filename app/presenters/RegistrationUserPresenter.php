@@ -67,31 +67,37 @@ class RegistrationUserPresenter extends Nette\Application\UI\Presenter
 
 	public function registerUserFormSucceeded($form, $values)
 	{
-		$this->database->table('user')->insert([
-			'name' => $values->name,
-			'last_name' => $values->last_name,
-			'nick' => $values->nick,
-			'school' => $values->school,
-			'email' => $values->email,
-			'mystery_topic' => $values->mystery_topic,
-			'mystery_volunteer' => $values->mystery_volunteer,
-			'favorite_math' => $values->favorite_math,
-			'favorite_physics' => $values->favorite_physics,
-			'favorite_chemistry' => $values->favorite_chemistry,
-			'created' => new DateTime(),
-		]);
+		$selection = $this->database->table('user');
+		$temp = $selection->where('email LIKE ?', $values->email)->fetch();
+		if (!$temp) {
+			$this->database->table('user')->insert([
+				'name' => $values->name,
+				'last_name' => $values->last_name,
+				'nick' => $values->nick,
+				'school' => $values->school,
+				'email' => $values->email,
+				'mystery_topic' => $values->mystery_topic,
+				'mystery_volunteer' => $values->mystery_volunteer,
+				'favorite_math' => $values->favorite_math,
+				'favorite_physics' => $values->favorite_physics,
+				'favorite_chemistry' => $values->favorite_chemistry,
+				'created' => new DateTime(),
+			]);
 
-		$mail = new Message;
-		$mail->setFrom('BrNOC bot <bot@brnoc.cz>')
-			->addTo($values->email)
-			->setSubject('Potvrzení příhlášení')
-			->setBody("Byl jsi přihlášen jako účastník BrNOCi 2015. \n \nBrNOC tým");
+			$mail = new Message;
+			$mail->setFrom('BrNOC bot <bot@brnoc.cz>')
+				->addTo($values->email)
+				->setSubject('Potvrzení příhlášení')
+				->setBody("Byl jsi přihlášen jako účastník BrNOCi 2015. \n \nBrNOC tým");
 
 
-		//$this->mailer->send($mail);
-		//not done
+			//$this->mailer->send($mail);
+			//not done
 
-		$this->flashMessage('Registrace proběhla úspěšně', 'success');
+			$this->flashMessage('Registrace proběhla úspěšně', 'success');
+		} else {
+			$this->flashMessage('Tento email už byl použit', 'danger');
+		}
 		$this->redirect('this');
 	}
 

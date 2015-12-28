@@ -1,0 +1,30 @@
+{block content}
+
+
+    <div class="page-header"><h1><h1>Přihlášené přednášky</h1></div>
+
+    <table class="table table-striped">
+        <thread>
+            <tr>
+                <th>#</th>
+                <th>Název přednášky</th>
+                <th>Obor</th>
+                <th>Popis</th>
+                <th>Délka</th>
+                <th>Přednášející</th>
+            </tr>
+        </thread>
+
+        <tbody>
+            <div n:foreach="$talks as $talk" class="talk">
+                <tr>
+                    <td>{$iterator->counter}</td>
+                    <td>{$talk->name}</td>
+                    <td>{$talk->subject}</td>
+                    <td>{$talk->decription}</td>
+                    <td>{$talk->lenght}</td>
+                    <td>{$talk->user_id}</td>
+                </tr>
+            </div>
+        </tbody>
+    </table>

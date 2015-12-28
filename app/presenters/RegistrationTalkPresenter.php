@@ -41,7 +41,8 @@ class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 		$form->addTextArea('decription', 'Popis')
 			->setRequired()->addRule(Form::MAX_LENGTH, 'Poznámka je příliš dlouhá', 1000);
 
-		$form->addRadioList('lenght', 'Délka', array(10,20,30))
+		//TODO replace for any lenght
+		$form->addRadioList('lenght', 'Délka', array(10 => '15 minut', 25 => '25 minut'))
 			->setRequired();
 
 		$form->addText('email', 'Email')
@@ -58,30 +59,35 @@ class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 
 	public function registerTalkFormSucceeded($form, $values)
 	{
-		$this->template->users = $this->database->table('user');
-		$temp = $this->template->users->where('email = ?', $values->email);
-		$lecturer = $temp->id;
+		$users = $this->database->table('user');
+		$temp = $users->select('id')->where('email LIKE ?', $values->email)->limit(1)->fetch();
 
-		$this->database->table('talk')->insert([
-			'name' => $values->name,
-			'subject' => $values->subject,
-			'decription' => $values->decription,
-			'lenght' => $values->lenght,
-			'lecturer' => $lecturer,
-		]);
+		if ($temp) {  //nepomohlo sem dat ani $temp
 
-		$mail = new Message;
-		$mail->setFrom('BrNOC bot <bot@brnoc.cz>')
-			->addTo($values->email)
-			->setSubject('Potvrzení příhlášení')
-			->setBody("Byl jsi přihlášen jako účastník BrNOCi 2015. \n \nBrNOC tým");
+			$this->database->table('talk')->insert([
+				'name' => $values->name,
+				'subject' => $values->subject,
+				'decription' => $values->decription,
+				'lenght' => $values->lenght,
+				'user_id' => $temp,
+			]);
+
+			$mail = new Message;
+			$mail->setFrom('BrNOC bot <bot@brnoc.cz>')
+				->addTo($values->email)
+				->setSubject('Potvrzení příhlášení')
+				->setBody("Byl jsi přihlášen jako účastník BrNOCi 2015. \n \nBrNOC tým");
 
 
-		//$this->mailer->send($mail);
-		//not done
+			//$this->mailer->send($mail);
+			//not done
 
-		$this->flashMessage('Registrace proběhla úspěšně', 'success');
-		$this->redirect('this');
+			$this->flashMessage('Registrace proběhla úspěšně', 'success');
+		} else {
+			$this->flashMessage('ÚČASTNÍK s tímto emailem neexistuje', 'danger');
+		}
+			$this->redirect('this');
+
 	}
 
 	//private function

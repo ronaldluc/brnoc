@@ -21,3 +21,7 @@ session:
 services:
 	router: App\RouterFactory::createRouter
 	-	Nette\Mail\SendmailMailer
+
+security:
+	users:
+		admin: secret # user 'a', password 'b'

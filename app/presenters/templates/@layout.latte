@@ -61,13 +61,15 @@
                 </li>
                 <li {ifCurrent Registered:*}class="active"{/ifCurrent}><a n:href="Registered:default">Rozpis</a></li>
                 <li {ifCurrent News:*}class="active"{/ifCurrent}><a href="#">Historie</a></li>
-                <li class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrace<span class="caret"></span></a>
+                <li n:if="$user->loggedIn" class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
+	              <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrace<span class="caret"></span></a>
 	              <ul class="dropdown-menu">
 	                <li><a n:href="Registered:admin">Účastníci</a></li>
 	                <li role="separator" class="divider"></li>
 	                <li><a n:href="RegisteredTalks:admin">Přednášky</a></li>
                   </ul>
+                </li>
+                <li n:if="!$user->loggedIn" {ifCurrent Sign:admin}class="active"{/ifCurrent}><a n:href="Sign:admin">Administrace</a></li>
                 <li class=""><a href="#" class="navbar-link">Facebook</a></li>
               </ul>
             </div>

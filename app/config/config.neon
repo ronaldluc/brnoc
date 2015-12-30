@@ -21,6 +21,7 @@ session:
 services:
 	router: App\RouterFactory::createRouter
 	-	Nette\Mail\SendmailMailer
+	-	Nette\Security\SimpleAuthenticator
 
 security:
 	users:

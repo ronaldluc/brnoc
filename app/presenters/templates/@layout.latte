@@ -61,6 +61,7 @@
                 </li>
                 <li {ifCurrent Registered:*}class="active"{/ifCurrent}><a n:href="Registered:default">Rozpis</a></li>
                 <li {ifCurrent News:*}class="active"{/ifCurrent}><a href="#">Historie</a></li>
+                <li {ifCurrent News:*}class="active"{/ifCurrent}><a href="#">Pravoúhlý sněm</a></li>
                 <li n:if="$user->loggedIn" class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
 	              <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrace<span class="caret"></span></a>
 	              <ul class="dropdown-menu">

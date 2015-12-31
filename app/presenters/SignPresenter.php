@@ -46,4 +46,11 @@ class SignPresenter extends Nette\Application\UI\Presenter
 			$this->flashMessage('Nesprávné heslo. V případě potíží kontaktuj Rona', 'danger');
 		}
 	}
+
+	public function actionOut()
+	{
+		$this->getUser()->logout();
+		$this->flashMessage('Odhlášení bylo úspěšné.');
+		$this->redirect('Homepage:');
+	}
 }

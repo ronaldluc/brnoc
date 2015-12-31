@@ -31,12 +31,13 @@ class RegisteredTalksPresenter extends Nette\Application\UI\Presenter
 
 	public function renderAdmin()
 	{
+		if (!$this->getUser()->isLoggedIn()) {
+			$this->redirect('Sign:admin');
+		}
+
 		$this->template->talks = $this->database->table('talk')
 			->order('name DESC');
 	}
 
-	private function addUser()
-	{
 
-	}
 }

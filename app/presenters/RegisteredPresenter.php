@@ -31,6 +31,10 @@ class RegisteredPresenter extends Nette\Application\UI\Presenter
 
 	public function renderAdmin()
 	{
+		if (!$this->getUser()->isLoggedIn()) {
+			$this->redirect('Sign:admin');
+		}
+
 		$this->template->users = $this->database->table('user')
 			->order('created DESC');
 	}

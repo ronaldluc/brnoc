@@ -25,19 +25,52 @@ class RegisteredTalksPresenter extends Nette\Application\UI\Presenter
 
 	public function renderDefault()
 	{
-		$this->template->talks = $this->database->table('talk')
+		$this->template->talks = $this->database->table('talk')->where('hidden = ?', 0)
 			->order('name DESC');
 	}
 
-	public function renderAdmin()
+	public function renderAdminHidden()
 	{
 		if (!$this->getUser()->isLoggedIn()) {
 			$this->redirect('Sign:admin');
 		}
 
-		$this->template->talks = $this->database->table('talk')
+		$this->template->talksHidden = $this->database->table('talk')
+			->where('hidden = ?', 1)
+			->order('name DESC');
+	}
+
+	public function renderAdminShown()
+	{
+		if (!$this->getUser()->isLoggedIn()) {
+			$this->redirect('Sign:admin');
+		}
+
+		$this->template->talksShown = $this->database->table('talk')
+			->where('hidden = ?', 0)
 			->order('name DESC');
 	}
 
 
+	public function handleDelete($id)
+	{
+		if (!$this->getUser()->isLoggedIn()) {
+			$this->redirect('Sign:admin');
+		}
+
+		$this->database->table('talk')->where('id = ?', $id)->delete();
+
+		//$this->redirect();
+	}
+
+	public function handleApprove($id)
+	{
+		if (!$this->getUser()->isLoggedIn()) {
+			$this->redirect('Sign:admin');
+		}
+
+		$this->database->table('talk')->where('id = ?', $id)->update(Array('hidden' => 0));
+
+		//$this->redirect();
+	}
 }

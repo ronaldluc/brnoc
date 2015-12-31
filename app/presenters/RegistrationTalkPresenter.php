@@ -20,13 +20,16 @@ use Nette,
 
 class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 {
+
 	/** @var  @var Nette\Databe\Context */
 	private $database;
+
 
 	public function __construct(Nette\Database\Context $database)
 	{
 		$this->database = $database;
 	}
+
 
 	protected function createComponentRegisterTalkForm()
 	{
@@ -57,6 +60,7 @@ class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 		return $form;
 	}
 
+
 	public function registerTalkFormSucceeded($form, $values)
 	{
 		$users = $this->database->table('user');
@@ -86,10 +90,8 @@ class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 		} else {
 			$this->flashMessage('ÚČASTNÍK s tímto emailem neexistuje', 'danger');
 		}
-			$this->redirect('this');
+		$this->redirect('this');
 
 	}
-
-	//private function
 
 }

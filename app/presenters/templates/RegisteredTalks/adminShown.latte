@@ -1,0 +1,22 @@
+{block content}
+
+
+	<div class="page-header"><h1>Přihlášené schválené přednášky</h1></div>
+
+    <table class="table table-bordered">
+		<tbody>
+			<div n:foreach="$talksShown as $talk" class="talk">
+				<tr>
+					<th class="col-md-3">{$talk->user->name}</th>
+					<td rowspan="4">{$talk->decription}</td>
+					<td class="col-md-1" rowspan="2"><a n:href="approve! $talk->id">Schválit</td>
+				</tr>
+				<tr><th>{$talk->name}</th></tr>
+				<tr><td>{$talk->subject}</td>
+					<td rowspan="2"><a n:href="delete! $talk->id">Smazat</a></td>
+				</tr>
+				<tr><td>{$talk->lenght}</td></tr>
+				<tr class="bg-success"><td colspan="3"></td></tr>
+			</div>
+		</tbody>
+	</table>

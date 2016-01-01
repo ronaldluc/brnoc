@@ -74,6 +74,7 @@ class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 				'decription' => $values->decription,
 				'lenght' => $values->lenght,
 				'user_id' => $temp,
+				'date' => new DateTime(),
 			]);
 
 			$mail = new Message;

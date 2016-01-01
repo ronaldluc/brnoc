@@ -58,7 +58,7 @@ class RegisteredTalksPresenter extends Nette\Application\UI\Presenter
 			$this->redirect('Sign:admin');
 		}
 
-		$this->database->table('talk')->where('id = ?', $id)->delete();
+		$this->database->table('talk')->where('id = ?', $id)->update(Array('hidden' => 2));
 
 		//$this->redirect();
 	}
@@ -70,6 +70,17 @@ class RegisteredTalksPresenter extends Nette\Application\UI\Presenter
 		}
 
 		$this->database->table('talk')->where('id = ?', $id)->update(Array('hidden' => 0));
+
+		//$this->redirect();
+	}
+
+	public function handleHide($id)
+	{
+		if (!$this->getUser()->isLoggedIn()) {
+			$this->redirect('Sign:admin');
+		}
+
+		$this->database->table('talk')->where('id = ?', $id)->update(Array('hidden' => 1));
 
 		//$this->redirect();
 	}

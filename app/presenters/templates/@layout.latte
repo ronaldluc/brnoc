@@ -39,50 +39,49 @@
 
 		<nav class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">BrNOC</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-				<li {ifCurrent Homepage:*}class="active"{/ifCurrent}><a n:href="Homepage:default">Home</a></li>
-				<li {ifCurrent News:*}class="active"{/ifCurrent}><a n:href="News:default">Aktuality</a></li>
-				<li class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Přihláška<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-					<li><a n:href="RegistrationUser:default">Osoba</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a n:href="RegistrationTalk:default">Přednáška</a></li>
-					</ul>
-				</li>
-				<li {ifCurrent RegisteredTalks:default}class="active"{/ifCurrent}><a n:href="RegisteredTalks:default">Rozpis</a></li>
-				<li {ifCurrent News:*}class="active"{/ifCurrent}><a href="#">Historie</a></li>
-				<li {ifCurrent News:*}class="active"{/ifCurrent}><a href="#">Pravoúhlý sněm</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li n:if="$user->loggedIn" class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
-						<a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrace<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-						<li><a n:href="Registered:admin">Účastníci</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a n:href="RegisteredTalks:adminHidden">Přednášky neschválené</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a n:href="RegisteredTalks:adminShown">Přednášky schválené</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a n:href="Sign:out">Odhlásit</a></li>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">BrNOC</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+					<li {ifCurrent Homepage:*}class="active"{/ifCurrent}><a n:href="Homepage:default">Home</a></li>
+					<li {ifCurrent News:*}class="active"{/ifCurrent}><a n:href="News:default">Aktuality</a></li>
+					<li class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Přihláška<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+							<li><a n:href="RegistrationUser:default">Osoba</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a n:href="RegistrationTalk:default">Přednáška</a></li>
 						</ul>
 					</li>
-					<li n:if="!$user->loggedIn" {ifCurrent Sign:admin}class="active"{/ifCurrent}><a n:href="Sign:admin">Administrace</a></li>
+					<li {ifCurrent RegisteredTalks:default}class="active"{/ifCurrent}><a n:href="RegisteredTalks:default">Přednášky</a></li>
+					<li {ifCurrent History:*}class="active"{/ifCurrent}><a n:href="History:">Historie</a></li>
+					<li {ifCurrent RightAngle:*}class="active"{/ifCurrent}><a n:href="RightAngle:">Pravoúhlý sněm</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li n:if="$user->loggedIn" class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
+							<a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrace<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a n:href="Registered:admin">Účastníci</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a n:href="RegisteredTalks:adminHidden">Přednášky neschválené</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a n:href="RegisteredTalks:adminShown">Přednášky schválené</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a n:href="Sign:out">Odhlásit</a></li>
+							</ul>
+						</li>
+						<li n:if="!$user->loggedIn" {ifCurrent Sign:admin}class="active"{/ifCurrent}><a n:href="Sign:admin">Administrace</a></li>
 
-					<li class=""><a href="#" class="navbar-link"><i class="fa fa-facebook-square"></i></a></li>
-				</ul>
-
-			</div>
+						<li class=""><a href="#" class="navbar-link"><i class="fa fa-facebook-square"></i></a></li>
+					</ul>
+				</div>
 			</div>
 		</nav>
 
@@ -143,7 +142,7 @@
 	</div><!-- /.carousel -->
 
 	<div class="container marketing">
-		<div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}"><strong>{$flash->message}</strong></div>
+		<div n:foreach="$flashes as $flash" class="alert alert-{$flash->type} text-center"><strong>{$flash->message}</strong></div>
 
 		{include content}
 		{block scripts}
@@ -151,8 +150,8 @@
 
 		<!-- FOOTER -->
 		<footer>
-		<p class="pull-right"><a href="#">Back to top</a></p>
-		<p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+			<p class="pull-right"><a href="#">Nahoru</a></p>
+			<p>&copy; 2015 by <a href="mailto:ron.norik(a)gmail.com">Ronald Luc</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 		</footer>
 
 	</div><!-- /.container -->

@@ -8,7 +8,7 @@
 			<div n:foreach="$talksHidden as $talk" class="talk">
 				<tr>
 					<th class="col-md-3">{$talk->user->name}</th>
-					<td rowspan="4">{$talk->decription}</td>
+					<td class="text-center" rowspan="4">{$talk->decription}</td>
 					<td class="col-md-1" rowspan="2"><a n:href="approve! $talk->id">Schválit</td>
 				</tr>
 				<tr><th>{$talk->name}</th></tr>

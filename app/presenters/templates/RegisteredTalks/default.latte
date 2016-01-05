@@ -6,7 +6,7 @@
 	<div n:foreach="$talks as $talk" class="talk">
 		<table class="table table-bordered">
 			<tr>
-				<th class="col-md-2">{$talk->user->name}</th>
+				<th class="col-md-2">{$talk->user->name}{if $talk->user->nick} "{$talk->user->nick}"{/if} {$talk->user->last_name}</th>
 				<td class="col-md-8" rowspan="3">{$talk->decription}</td></tr>
 			<tr><th>{$talk->name}</th></tr>
 			<tr><td>{$talk->subject} - {$talk->lenght} minut</td></tr>

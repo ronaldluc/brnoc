@@ -3,7 +3,7 @@
 /* Padding below the footer and lighter body text */
 
 body {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     color: #5a5a5a;
 }
 
@@ -40,7 +40,6 @@ body {
 /* Carousel base class */
 .carousel {
     height: 500px;
-    margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -82,7 +81,7 @@ body {
 ------------------------- */
 
 .featurette-divider {
-    margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    margin: 40px 0; /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
@@ -129,6 +128,6 @@ body {
 
 @media (min-width: 992px) {
     .featurette-heading {
-        margin-top: 120px;
+        margin-top: 60px;
     }
 }

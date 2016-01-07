@@ -26,135 +26,141 @@
 	<!-- Custom styles for this template -->
 	<link href="{$basePath}/assets/css/carousel.css" rel="stylesheet">
 	<link href="{$basePath}/assets/css/custom.css" rel="stylesheet">
-	<link href="{$basePath}/assets/fonts/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href="{$basePath}/assets/fonts/css/font-awesome.min.css" rel="stylesheet">
 	</head>
 <!-- NAVBAR
 ================================================== -->
 	<body>
-	<div class="navbar-wrapper">
-		<div class="container">
 
-		<nav class="navbar navbar-inverse navbar-static-top">
+	<div class="wraper-content center-block">
+
+		<div class="navbar-wrapper">
 			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">BrNOC</a>
-				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-					<li {ifCurrent Homepage:*}class="active"{/ifCurrent}><a n:href="Homepage:default">Home</a></li>
-					<li {ifCurrent News:*}class="active"{/ifCurrent}><a n:href="News:default">Aktuality</a></li>
-					<li class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Přihláška<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-							<li><a n:href="RegistrationUser:default">Osoba</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a n:href="RegistrationTalk:default">Přednáška</a></li>
-						</ul>
-					</li>
-					<li {ifCurrent RegisteredTalks:default}class="active"{/ifCurrent}><a n:href="RegisteredTalks:default">Přednášky</a></li>
-					<li {ifCurrent RightAngle:*}class="active"{/ifCurrent}><a n:href="RightAngle:">Pravoúhlý sněm</a></li>
-					<li {ifCurrent Contact:*}class="active"{/ifCurrent}><a n:href="Contact:">Kontaky</a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li n:if="$user->loggedIn" class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
-							<a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrace<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a n:href="Registered:admin">Účastníci</a></li>
+
+			<nav class="navbar navbar-inverse navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">BrNOC</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+						<li {ifCurrent Homepage:*}class="active"{/ifCurrent}><a n:href="Homepage:default">Home</a></li>
+						<li {ifCurrent News:*}class="active"{/ifCurrent}><a n:href="News:default">Aktuality</a></li>
+						<li class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Přihláška<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+								<li><a n:href="RegistrationUser:default">Osoba</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a n:href="RegisteredTalks:adminHidden">Přednášky neschválené</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a n:href="RegisteredTalks:adminShown">Přednášky schválené</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a n:href="Sign:out">Odhlásit</a></li>
+								<li><a n:href="RegistrationTalk:default">Přednáška</a></li>
 							</ul>
 						</li>
-						<li n:if="!$user->loggedIn" {ifCurrent Sign:admin}class="active"{/ifCurrent}><a n:href="Sign:admin">Administrace</a></li>
+						<li {ifCurrent RegisteredTalks:default}class="active"{/ifCurrent}><a n:href="RegisteredTalks:default">Přednášky</a></li>
+						<li {ifCurrent RightAngle:*}class="active"{/ifCurrent}><a n:href="RightAngle:">Pravoúhlý sněm</a></li>
+						<li {ifCurrent Contact:*}class="active"{/ifCurrent}><a n:href="Contact:">Kontaky</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li n:if="$user->loggedIn" class="dropdown {ifCurrent RegistrationUser:*}active{/ifCurrent}">
+								<a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrace<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a n:href="Registered:admin">Účastníci</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a n:href="RegisteredTalks:adminHidden">Přednášky neschválené</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a n:href="RegisteredTalks:adminShown">Přednášky schválené</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a n:href="Sign:out">Odhlásit</a></li>
+								</ul>
+							</li>
+							<li n:if="!$user->loggedIn" {ifCurrent Sign:admin}class="active"{/ifCurrent}><a n:href="Sign:admin">Administrace</a></li>
 
-						<li class=""><a href="#" class="navbar-link"><i class="fa fa-facebook-square"></i></a></li>
-					</ul>
+							<li class=""><a href="#" class="navbar-link"><i class="fa fa-facebook-square"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			</div>
+		</div>
+
+
+		<!-- Carousel
+		================================================== -->
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img class="first-slide" src="{$basePath}/assets/paper_img/bg_wall.jpg" alt="First slide">
+				<!-- data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==-->
+				<div class="container">
+				<div class="carousel-caption">
+					<h1>BrNOC</h1>
+					<h2>Brněnská přednášková noc</h2>
+					<p>Poslechni si přednášky svých vrstevníků.</p>
+					<p><a class="btn btn-lg btn-primary" n:href="RegistrationUser:default" role="button">To chci!</a></p>
+				</div>
 				</div>
 			</div>
-		</nav>
+			<div class="item">
+				<img class="second-slide" src="https://sincyscience.files.wordpress.com/2014/06/schrodingers-cat.jpg" alt="Second slide">
+				<div class="container">
+				<div class="carousel-caption">
+					<h1>O BrNOCi</h1>
+					<p>Zjisti co skýtá nejžhavější akce roku 2016</p>
+					<p><a class="btn btn-lg btn-primary" n:href="Homepage:default#what" role="button">To chci!</a></p>
+				</div>
+				</div>
+			</div>
+			<div class="item">
+				<img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+				<div class="container">
+				<div class="carousel-caption">
+					<h1>"Tak nadupanou akci jsem ještě neviděl."</h1>
+					<p>Nevěřte ostatním, přesvěčte se sami.</p>
+					<p><a class="btn btn-lg btn-primary" n:href="RegisteredTalks:default" role="button">Nevěřím!</a></p>
+				</div>
+				</div>
+			</div>
+			</div>
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Předchozí</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Další</span>
+			</a>
+		</div><!-- /.carousel -->
+
+		<div class="marketing inner-content">
+
+				<div class="alert alert-danger text-center"><strong>Tento web je teprve ve výstavbě, prosím přijděte později.</strong></div>
+			<div n:foreach="$flashes as $flash" class="alert alert-{$flash->type} text-center"><strong>{$flash->message}</strong></div>
+
+			{include content}
+			{block scripts}
 
 		</div>
 	</div>
 
-
-	<!-- Carousel
-	================================================== -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-		<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner" role="listbox">
-		<div class="item active">
-			<img class="first-slide" src="{$basePath}/assets/paper_img/bg_wall.jpg" alt="First slide">
-			<!-- data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==-->
-			<div class="container">
-			<div class="carousel-caption">
-				<h1>BrNOC</h1>
-				<h2>Brněnská přednášková noc</h2>
-				<p>Poslechni si přednášky svých vrstevníků.</p>
-				<p><a class="btn btn-lg btn-primary" n:href="RegistrationUser:default" role="button">To chi!</a></p>
-			</div>
-			</div>
+		<div class="footer container">
+			<!-- FOOTER -->
+			<footer>
+				<p class="pull-right"><a href="#">Nahoru</a></p>
+				<p>&copy; 2015 by <a href="mailto:ron.norik&#64gmail.com">Ronald Luc</a> &middot; <a n:href="Contact:">PúS</a> &middot; <a href="#">Terms</a></p>
+			</footer>
 		</div>
-		<div class="item">
-			<img class="second-slide" src="https://sincyscience.files.wordpress.com/2014/06/schrodingers-cat.jpg" alt="Second slide">
-			<div class="container">
-			<div class="carousel-caption">
-				<h1>O BrNOCi</h1>
-				<p>Zjisti co skýtá nejžhavější akce roku 2016</p>
-				<p><a class="btn btn-lg btn-primary" n:href="Homepage:default#what" role="button">To chci!</a></p>
-			</div>
-			</div>
-		</div>
-		<div class="item">
-			<img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-			<div class="container">
-			<div class="carousel-caption">
-				<h1>"Tak nadupanou akci jsem ještě neviděl."</h1>
-				<p>Nevěřte ostatním, přesvěčte se sami.</p>
-				<p><a class="btn btn-lg btn-primary" n:href="RegisteredTalks:default" role="button">Nevěřím!</a></p>
-			</div>
-			</div>
-		</div>
-		</div>
-		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-		<span class="sr-only">Předchozí</span>
-		</a>
-		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-		<span class="sr-only">Další</span>
-		</a>
-	</div><!-- /.carousel -->
-
-	<div class="container marketing">
-        	<div class="alert alert-danger text-center"><strong>Tento web je teprve ve výstavbě, prosím přijděte později.</strong></div>
-		<div n:foreach="$flashes as $flash" class="alert alert-{$flash->type} text-center"><strong>{$flash->message}</strong></div>
-
-		{include content}
-		{block scripts}
-
-
-		<!-- FOOTER -->
-		<footer>
-			<p class="pull-right"><a href="#">Nahoru</a></p>
-			<p>&copy; 2015 by <a href="mailto:ron.norik&#64gmail.com">Ronald Luc</a> &middot; <a n:href="Contact:">PúS</a> &middot; <a href="#">Terms</a></p>
-		</footer>
-
-	</div><!-- /.container -->
+		<!-- /.container -->
 
 
 	<!-- Bootstrap core JavaScript

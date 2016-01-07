@@ -1,3 +1,48 @@
 .outerBox {
 	display:block;
 }
+
+.btn-text {
+	margin-bottom:15px;
+	white-space: normal;
+	display: block;
+	width: 100%;
+	height: 290px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-top: 10px;
+}
+
+body {
+	background-image: url("../img/mainbackground.png");
+	background-attachment: fixed;
+
+}
+
+.wraper-content {
+	background-color: white;
+	border-radius: 25px;
+
+}
+
+.inner-content {
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-bottom: 5px;
+}
+
+.footer {
+	margin-top: 20px;
+}
+
+@media (min-width:768px){.wraper-content{width:750px}}
+@media (min-width:992px){.wraper-content{width:970px}}
+@media (min-width:1200px){.wraper-content{width:1170px}}
+
+@media (min-width:992px) {
+	.btn-text{
+		height: 270px;
+	}
+}
+

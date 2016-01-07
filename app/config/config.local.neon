@@ -3,5 +3,5 @@ parameters:
 
 database:
 	dsn: 'mysql:host=127.0.0.1;dbname=brnoc'
-	user: root
-	password:
+	user: brnoc
+	password: AK3KEnQcJBPaVuD7

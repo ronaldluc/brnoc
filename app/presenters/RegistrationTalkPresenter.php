@@ -9,6 +9,8 @@
 
 namespace App\Presenters;
 
+use App\Model\RegistrationTalkModel;
+
 use Nette,
 	Nette\Application\UI\Form,
 	Nette\Utils\DateTime,
@@ -21,15 +23,14 @@ use Nette,
 class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 {
 
-	/** @var  @var Nette\Databe\Context */
-	private $database;
+	/** @var RegistrationTalkModel */
+	private $registrationTalkModel;
 
 
-	public function __construct(Nette\Database\Context $database)
+	public function __construct(RegistrationTalkModel $registrationTalkModel)
 	{
-		$this->database = $database;
+		$this->registrationTalkModel = $registrationTalkModel;
 	}
-
 
 	protected function createComponentRegisterTalkForm()
 	{
@@ -63,30 +64,10 @@ class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 
 	public function registerTalkFormSucceeded($form, $values)
 	{
-		$users = $this->database->table('user');
-		$temp = $users->select('id')->where('email LIKE ?', $values->email)->limit(1)->fetch();
+		$temp = $this->registrationTalkModel->createTalk($values);
 
-		if ($temp) {  //nepomohlo sem dat ani $temp
-
-			$this->database->table('talk')->insert([
-				'name' => $values->name,
-				'subject' => $values->subject,
-				'decription' => $values->decription,
-				'lenght' => $values->lenght,
-				'user_id' => $temp,
-				'date' => new DateTime(),
-			]);
-
-			$mail = new Message;
-			$mail->setFrom('BrNOC bot <bot@brnoc.cz>')
-				->addTo($values->email)
-				->setSubject('Potvrzení příhlášení')
-				->setBody("Byl jsi přihlášen jako účastník BrNOCi 2015. \n \nBrNOC tým");
-
-
-			//$this->mailer->send($mail);
-			//not done
-
+		if ($temp)
+		{
 			$this->flashMessage('Registrace proběhla úspěšně', 'success');
 		} else {
 			$this->flashMessage('ÚČASTNÍK s tímto emailem neexistuje', 'danger');

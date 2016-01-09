@@ -22,6 +22,7 @@ services:
 	router: App\RouterFactory::createRouter
 	-	Nette\Mail\SendmailMailer
 	#-	Nette\Security\SimpleAuthenticator
+	-   App\Model\RegistrationTalkModel
 
 security:
 	users:

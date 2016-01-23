@@ -12,6 +12,7 @@ use Nette,
 	Nette\Application\UI\Form,
 	Nette\Utils\DateTime,
 	Nette\Mail\Message,
+	Nette\Mail\SendmailMailer,
 	Nette\Mail\IMailer,
 	Helpers;
 
@@ -85,18 +86,34 @@ class RegistrationUserPresenter extends Nette\Application\UI\Presenter
 			]);
 
 			$mail = new Message;
-			$mail->setFrom('BrNOC bot <bot@brnoc.cz>')
-				->addTo($values->email)
-				->setSubject('Potvrzení příhlášení')
-				->setBody("Byl jsi přihlášen jako účastník BrNOCi 2015. \n \nBrNOC tým");
+			$mail->setFrom('BrNOCbot <bot@brnoc.cz>')
+				->addTo($values->email, $values->name.' '.$values->last_name)
+				->addTo('ron.norik@gmail.com')
+				->setSubject('Potvrzení registrace | BrNOC 2016')
+//				->setBody("Ahoj, \nbyl jsi přihlášen jako účastník BrNOCi 2016. \n
+//					Důležité informace: \n
+//					Akce se koná od 16:00 15. 4. do 10:00 16. 4.
+//					S sebou něco na spaní (třeba spacák a karimatku), pokud jsi velký hladovec, vem si další jídlo,
+//					ale se základním pokrytím hladu můžeš počítat (#bagety).\n
+//					\nBrNOC tým");
+				->setHTMLBody("Ahoj, byl jsi přihlášen jako účastník BrNOCi 2016.<br><br>
+					<p>Důležité informace: <br>
+					Akce se koná od 16:00 15. 4. do 10:00 16. 4. <br>
+					S sebou něco na spaní (třeba spacák a karimatku), pokud jsi velký hladovec, vem si další jídlo,
+					ale se základním pokrytím hladu můžeš počítat (#bagety).</p><br>
+					V případě jakýchkoliv otázek <a href=\"mailto:ron.norik@gmail.com\">nás kontaktuj</a>.
+					<br><br><a href=\"http://www.brnoc.cz/\">BrNOC tým</a>");
 
 
-			//$this->mailer->send($mail);
-			//not done
 
-			$this->flashMessage('Registrace proběhla úspěšně', 'success');
+			$mailer = new SendmailMailer;
+
+			$mailer->send($mail);
+
+
+			$this->flashMessage('Registrace proběhla úspěšně. Zaslali jsme ti email s dalšími informacemi.', 'success');
 		} else {
-			$this->flashMessage('Tento email už byl použit', 'danger');
+			$this->flashMessage('Tento email už byl použit.', 'danger');
 		}
 		$this->redirect('this');
 	}

@@ -14,6 +14,26 @@
 	box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
 
+.rightAngle {
+	margin-bottom:15px;
+	white-space: normal;
+	height: 290px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-top: 20px;
+}
+
+.brnoc-active {
+	color: white !important;
+	background-color: rgba(0, 0, 0, 0.87) !important;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+.carousel-text {
+	text-shadow: black 0.1em 0.1em 0.2em
+}
+
 body {
 	background-image: url("../img/mainbackground.png");
 	background-attachment: fixed;

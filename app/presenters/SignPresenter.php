@@ -42,8 +42,7 @@ class SignPresenter extends Nette\Application\UI\Presenter
 			$this->flashMessage('Jsi přihlášen.', 'success');
 			$this->redirect('Homepage:');
 		} catch (Nette\Security\AuthenticationException $e) {
-			$form->addError('Nesprávné heslo. V případě potíží kontaktuj Rona');
-			$this->flashMessage('Nesprávné heslo. V případě potíží kontaktuj Rona', 'danger');
+			$this->flashMessage('Nesprávné heslo. V případě potíží kontaktuj Rona. Dodržuj PP.', 'danger');
 		}
 	}
 

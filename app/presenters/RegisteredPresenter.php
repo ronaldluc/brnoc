@@ -38,4 +38,15 @@ class RegisteredPresenter extends Nette\Application\UI\Presenter
 		$this->template->users = $this->database->table('user')
 			->order('created DESC');
 	}
+
+	public function handleDelete($id)
+	{
+		if (!$this->getUser()->isLoggedIn()) {
+			$this->redirect('Sign:admin');
+		}
+
+		$this->database->table('user')->where('id = ?', $id)->delete();
+
+		//$this->redirect();
+	}
 }

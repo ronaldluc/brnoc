@@ -30,14 +30,19 @@
 	border-top-left-radius: 3px;
 }
 
-.carousel-text {
-	text-shadow: black 0.1em 0.1em 0.2em
-}
+
 
 body {
 	background-image: url("../img/mainbackground.png");
 	background-attachment: fixed;
 
+}
+
+
+
+.carousel-text {
+	text-shadow: black 0.1em 0.1em 0.2em;
+	font-size: small;
 }
 
 .navbar {
@@ -61,8 +66,25 @@ body {
 	margin-top: 20px;
 }
 
+.footer-text {
+}
+
+@media (max-width:991px){
+	.carousel-text {
+		font-size: small;
+	}
+
+	.carousel-text-h {
+		font-size: medium;
+	}
+
+	.carousel-button {
+		background-color: transparent;
+		border-color: transparent;
+	}}
+
 @media (min-width:768px){.wraper-content{width:750px}}
-@media (min-width:992px){.wraper-content{width:970px}}
+@media (min-width:992px){.wraper-content{width:970px}  }
 @media (min-width:1200px){.wraper-content{width:1170px}}
 
 @media (min-width:992px) {

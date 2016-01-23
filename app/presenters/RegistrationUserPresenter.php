@@ -86,7 +86,7 @@ class RegistrationUserPresenter extends Nette\Application\UI\Presenter
 			]);
 
 			$mail = new Message;
-			$mail->setFrom('BrNOCbot <bot@brnoc.cz>')
+			$mail->setFrom('<pus@brnoc.cz>', 'Pravoúhelný sněm')
 				->addTo($values->email, $values->name.' '.$values->last_name)
 				->addTo('ron.norik@gmail.com')
 				->setSubject('Potvrzení registrace | BrNOC 2016')
@@ -98,11 +98,11 @@ class RegistrationUserPresenter extends Nette\Application\UI\Presenter
 //					\nBrNOC tým");
 				->setHTMLBody("Ahoj, byl jsi přihlášen jako účastník BrNOCi 2016.<br><br>
 					<p>Důležité informace: <br>
-					Akce se koná od 16:00 15. 4. do 10:00 16. 4. <br>
+					O přesném konání akce tě budeme informovat, počítej však s přelomem března dubna.<br>
 					S sebou něco na spaní (třeba spacák a karimatku), pokud jsi velký hladovec, vem si další jídlo,
 					ale se základním pokrytím hladu můžeš počítat (#bagety).</p><br>
-					V případě jakýchkoliv otázek <a href=\"mailto:ron.norik@gmail.com\">nás kontaktuj</a>.
-					<br><br><a href=\"http://www.brnoc.cz/\">BrNOC tým</a>");
+					V případě jakýchkoliv otázek <a href=\"mailto:pus@brnoc.cz\">nás kontaktuj</a>.
+					<br><br><a href=\"http://www.brnoc.cz/\">Pravoúhlý sněm</a>");
 
 
 

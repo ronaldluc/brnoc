@@ -82,12 +82,9 @@ class RegistrationTalkPresenter extends Nette\Application\UI\Presenter
 //					ale se základním pokrytím hladu můžeš počítat (#bagety).\n
 //					\nBrNOC tým");
 				->setHTMLBody("Ahoj, tvoje přednáška ".$values->name." byla přihlášena do systému.<br><br>
-					<p>Důležité informace: <br>
-					Akce se koná od 16:00 15. 4. do 10:00 16. 4. <br>
-					S sebou něco na spaní (třeba spacák a karimatku), pokud jsi velký hladovec, vem si další jídlo,
-					ale se základním pokrytím hladu můžeš počítat (#bagety).</p><br>
-					V případě jakýchkoliv otázek <a href=\"mailto:pus@brnoc.cz\">nás kontaktuj</a>.
-					<br><br><a href=\"http://www.brnoc.cz/\">BrNOC tým</a>");
+					<p>V případě schválení tvojí přednášky tě budeme dále informovat. To stejné platí, pokud se nám povede zajistit proplacení jízdného pro mimobrněnské přednášející.</p><br>
+					V případě jakýchkoliv dalších otázek <a href=\"mailto:pus@brnoc.cz\">nás kontaktuj</a>.
+					<br><br><a href=\"http://www.brnoc.cz/\">Pravoúhlý sněm</a>");
 
 
 
